@@ -3,30 +3,48 @@ import numpy as np
 
 df = pd.read_csv("FoodAccessData.csv")
 
+# Census tract
 def extractId(censusTract): # to extract last 6 digits
     return str(censusTract)[-6:]
 
+def checkTractNum(num):
+    isNotValid = True
+    while isNotValid:
+        if len(str(num)) == 6 and num.isnumeric():
+            return num
+        else:
+            num = input("Enter Census ")
+
+def findTractNum(num):
+    num = checkTractNum(num)
+    listValidTractNum.sort()
+    low = 0
+    high = len(listValidTractNum) - 1
+    mid = 0
+    while low <= high:
+        mid = (high + low) // 2
+        if listValidTractNum[mid] < num:
+            low = mid + 1
+        elif listValidTractNum[mid] > num:
+            high = mid - 1
+        else:
+            return num
+    return listValidTractNum[mid]
+
+# County
 def addCounty(c):
     if (c[-7:].lower() != " county"):
-        c = (c + " County").lower().capitalize()
+        c = c.lower().capitalize() + " County"
     return c
 
-def checkCounty(c, dict):
-    addCounty(c)
-    if c in dict.keys():
+def checkCounty(c):
+    c = addCounty(c)
+    if c in listValidCounties:
         return c
-
-def defFlag(integer):
-    return integer == 1
-
-def calcRatio(num1, num2):
-    if num1 == "Unknown":
-        return "Value is unknown"
     else:
-        ratio = num1 / num2 * 100
-        ratio = round(ratio, 2)     # round to 2 decimal places
-        return ratio
+        print("Please enter valid county")
 
+# State
 def checkState(state):
     if len(state) == 2:
         state = state.upper()
@@ -60,28 +78,36 @@ def checkState(state):
         else:
             return "Please enter valid state"
 
+# LA tract
+def defFlag(integer):
+    return integer == 1
 
-def checkTractNum(num):
-    isNotValid = True
-    while isNotValid:
-        if len(str(num)) == 6 and type(num) == "int":
-            isNotValid = False
-            return num
-        tractNum = input("Enter Census ")
+# LILA and LI
+def calcRatio(num1, num2):
+    if num1 == "Unknown":
+        return "Value is unknown"
+    else:
+        ratio = num1 / num2 * 100
+        ratio = round(ratio, 2)     # round to 2 decimal places
+        return ratio
+
 
 df["CensusTract"] = df["CensusTract"].apply(extractId)  # changes CensusTract # to last 6 digits
 df.replace({np.NaN : "Unknown"}, inplace=True)  # replaces NaN with "Unknown"
 
 # build dictionary
+listValidCounties = df["County"].tolist()
+listValidTractNum = df["CensusTract"].tolist()
 df = df.set_index(["CensusTract", "State", "County"]).T.to_dict("list")
 
 # take user input
 tractNum = input("Enter Census Tract Number: ")
-tractNum = checkTractNum(tractNum)
+tractNum = findTractNum(tractNum)
 state = input("Enter state: ")
 state = checkState(state)
 county = input("Enter county: ")
 county = addCounty(county)
+print(tractNum + state + county)
 
 list = [tractNum, state, county]
 tup = tuple(list)
@@ -95,9 +121,6 @@ laliRatio = calcRatio(lali, population)
 li = data[3]    # number of low income people
 liRatio = calcRatio(li, population)
 
-print(df)
+# print(df)
 print(data)
-print(population)
-print(flagTrue)
-print(laliRatio)
-print(liRatio)
+print(str(population) + ", " + str(flagTrue) + ", " + str(laliRatio) + ", " + str(liRatio))
