@@ -13,7 +13,7 @@ def submit():
     state = request.args.get("state", None)
     county = request.args.get("county", None)
     listValues = mainFunction(censusTractCode, county, state)
-    myhtml = "<head><link rel='stylesheet' type='text/css' title='regular' href='styles.css' /></head><form method='get' id='dataForm' style='text-align: center;'><input type='text' name='state' id='state' style='width: 20vw; height: 6vh; padding: 3px; font-size: 2em; margin: 2px;' /><input type='submit' id='submitButton' style='cursor: pointer; padding: 5px; font-size: 1.2em;' /><br><br><label style='font-size: 2em; font-family: Georgia, 'Times New Roman', Times, serif;'><h1>'{}, {} of population {}'.format(county, state, listValues[0])</h1><h1>'{} of its residents are just low-income.'.format(listValues[3])</h1><h1>'{} of its residents are low-income and low-access'.format(listValues[2])</label></form>"
+    myhtml = "<head><link rel='stylesheet' type='text/css' title='regular' href='styles.css' /></head><form method='get' id='dataForm' style='text-align: center;'><input type='text' name='state' id='state' style='width: 20vw; height: 6vh; padding: 3px; font-size: 2em; margin: 2px;' /><input type='submit' id='submitButton' style='cursor: pointer; padding: 5px; font-size: 1.2em;' /><br><br><label style='font-size: 2em; font-family: Georgia, 'Times New Roman', Times, serif;'><h1>'{}, {} of population {}'.format(county, state, listValues[0])</h1><h1>'{} of its residents are just low-income.'.format(listValues[3])</h1><h1>'{} of its residents are low-income and have limited access to nutritious food in a 1 to 10 mile radius'.format(listValues[2])</label></form>"
     return myhtml
 
 app.run(debug=True, host="0.0.0.0", port=5555)
