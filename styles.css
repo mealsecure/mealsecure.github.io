@@ -110,6 +110,8 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
+  color: #FFFF;
+  text-align: center;
 }
 @media (min-width: 1200px) {
   h1, .h1 {
@@ -119,6 +121,8 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: calc(1.325rem + 0.9vw);
+  color: #000000;
+  text-align: center;
 }
 @media (min-width: 1200px) {
   h2, .h2 {
@@ -153,6 +157,8 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem;
+  color: #FFFF;
+  margin-left: 20px;
 }
 
 p {
@@ -3035,14 +3041,20 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #264653;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: #264653;
   margin-right:30px;
+  border-radius: 20px;
 }
 .btn-primary2 {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: #264653;
+  border-color: #264653;
+  border-radius: 20px;
 }
 .btn-primary:hover {
   color: #fff;

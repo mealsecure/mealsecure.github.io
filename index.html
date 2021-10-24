@@ -13,14 +13,18 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <section>
         <style>
             body{
-                background-image: url('bg-img');
+                background-image: url('img2.jpg');
+                background-repeat: no repeat;
+                background-attachment: fixed;
+                background-size: contain;
             }
         </style>
-    </head>
-    <body background="bg-img.jpg">
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
@@ -76,10 +80,11 @@
                                         <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
                                         <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
                                     </div>
-                                    <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Search</button></div>
+                                    <!--search button-->
+                                    <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit"><a href="search results.html">Search</a></button></div>
                                     </h4>
                                 </div>
-                                <!--add submit button-->
+                                
                                 <!-- Submit success message-->
                                 <!---->
                                 <!-- This is what your users will see when the form-->
@@ -97,6 +102,11 @@
                                 <!-- an error submitting the form-->
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <div>
+                                    <style>
+                                        a:link {
+                                            color:azure
+                                        }
+                                    </style>
                                 <p1><a  href="https://geocoding.geo.census.gov/geocoder/geographies/address?form"><u>I don't know my census tract code</u></a></p1>
                                 </div>
                             </form>
@@ -104,12 +114,8 @@
                     </div>
                 </div>
             </div>
-        <a href="#about">
-            
-        </a>
-        <a href="#donate">
-
-        </a>
+        </header>
+        </section>
         </header>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
