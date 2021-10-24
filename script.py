@@ -135,8 +135,12 @@ def mainFunction(censusTractData, county, state):
     population = data[0]
     flag = data[1]  # flag of 0 or 1, 33% or 500 people are LALI
     flagTrue = defFlag(flag)  # boolean of if flag is 0 or 1
+    if flagTrue:
+        flag = "high"
+    else:
+        flag = "low"
     lali = data[2]  # number of low access low income people
     laliRatio = calcRatio(lali, population)
     li = data[3]  # number of low income people
     liRatio = calcRatio(li, population)
-    return [population, flagTrue, laliRatio, liRatio]
+    return [population, flag, laliRatio, liRatio]
