@@ -28,7 +28,10 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">MealSecure</a>
+                <a class="navbar-brand" href="#!">
+                    <img src="mealsecurelogo.png">
+                    MealSecure
+                </a>
                 <div class="topnav-right">
                 <a class="btn btn-primary" href="#signup">Donate</a>
                 <a class="btn btn-primary2" href="#signup">About</a>
@@ -55,20 +58,20 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <form class="form-subscribe" id="contactForm">
                                 <!--county-->
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="Enter your County" data-sb-validations="required,email" />
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                        <input class="form-control form-control-lg" id="county" type="text" placeholder="Enter your County" data-sb-validations="required,text" />
+                                        <div class="invalid-feedback text-white" data-sb-feedback="county:required">County is required.</div>
+                                        <div class="invalid-feedback text-white" data-sb-feedback="county:text">County Email is not valid.</div>
                                     </div>
                                     <div class="col-auto"></div>
                                
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="Enter your State" data-sb-validations="required,email" />
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                        <input class="form-control form-control-lg" id="state" type="text" placeholder="Enter your State" data-sb-validations="required,text" />
+                                        <div class="invalid-feedback text-white" data-sb-feedback="state:required">Email Address is required.</div>
+                                        <div class="invalid-feedback text-white" data-sb-feedback="state:text">Email Address Email is not valid.</div>
                                     </div>
                                     <div class="col-auto"></div>
                                 </div>
@@ -76,9 +79,9 @@
                                 <h4>
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="Enter your Census Tract Code" data-sb-validations="required,email" size="20" />
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                        <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                        <input class="form-control form-control-lg" id="census-tract-code" type="email" placeholder="Enter your Census Tract Code" data-sb-validations="required,email" size="20" />
+                                        <div class="invalid-feedback text-white" data-sb-feedback="number:required">Census tract code is required.</div>
+                                        <div class="invalid-feedback text-white" data-sb-feedback="census-tract-code:number">Census tract code is not valid.</div>
                                     </div>
                                     <!--search button-->
                                     <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit"><a href="search results.html">Search</a></button></div>
