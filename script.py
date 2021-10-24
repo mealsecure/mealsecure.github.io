@@ -61,7 +61,6 @@ def checkState(state):
         else:
             return "Please enter valid state"
     else:
-        state = state.split(" ")
         state = state.capitalize()
         states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
   "Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois",
@@ -89,17 +88,8 @@ def calcRatio(num1, num2):
         ratio = round(ratio, 2)     # round to 2 decimal places
         return ratio
 
-
-'''df["CensusTract"] = df["CensusTract"].apply(extractId)  # changes CensusTract # to last 6 digits
-df.replace({np.NaN : "Unknown"}, inplace=True)  # replaces NaN with "Unknown"
-
-# build dictionary
-listValidCounties = df["County"].tolist()
-listValidTractNum = df["CensusTract"].tolist()
-df = df.set_index(["CensusTract", "State", "County"]).T.to_dict("list")'''
-
 # take user input
-'''tractNum = input("Enter Census Tract Number: ")
+"""tractNum = input("Enter Census Tract Number: ")
 tractNum = findTractNum(tractNum)
 state = input("Enter state: ")
 state = checkState(state)
@@ -117,13 +107,13 @@ flagTrue = defFlag(flag)   # boolean of if flag is 0 or 1
 lali = data[2]  # number of low access low income people
 laliRatio = calcRatio(lali, population)
 li = data[3]    # number of low income people
-liRatio = calcRatio(li, population)'''
+liRatio = calcRatio(li, population)"""
 
 # print(df)
 #print(data)
 #print(str(population) + ", " + str(flagTrue) + ", " + str(laliRatio) + ", " + str(liRatio))
 
-def mainFunction(censusTractCode, state, county):
+def mainFunction(censusTractData, county, state):
     df = pd.read_csv("FoodAccessData.csv")
     df["CensusTract"] = df["CensusTract"].apply(extractId)  # changes CensusTract # to last 6 digits
     df.replace({np.NaN: "Unknown"}, inplace=True)  # replaces NaN with "Unknown"
@@ -133,9 +123,10 @@ def mainFunction(censusTractCode, state, county):
     listValidTractNum = df["CensusTract"].tolist()
     df = df.set_index(["CensusTract", "State", "County"]).T.to_dict("list")
 
-    tractNum = findTractNum(censusTractCode, listValidTractNum)
+    tractNum = findTractNum(censusTractData, listValidTractNum)
     state = checkState(state)
     county = checkCounty(county, listValidCounties)
+    print(tractNum + state + county)
 
     list = [tractNum, state, county]
     tup = tuple(list)
@@ -148,8 +139,4 @@ def mainFunction(censusTractCode, state, county):
     laliRatio = calcRatio(lali, population)
     li = data[3]  # number of low income people
     liRatio = calcRatio(li, population)
-
-    return [censusTractCode, flagTrue, population, laliRatio, liRatio]
-
-
-
+    return [population, flagTrue, laliRatio, liRatio]
