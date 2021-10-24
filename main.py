@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for, redirect, render_template
 
 app = Flask(__name__)
-@app.route("/results")
+@app.route("/searchresults")
 def results():
     return render_template('results.html')
 
@@ -11,6 +11,7 @@ def submit():
         censusTractCode = request.args.get("census-tract-code", None)
         state = request.args.get("state", None)
         county = request.args.get("county", None)
+        listValues = app.mainFunction(censusTractCode, state, county)
         return '''
             <h1>{}, {}</h1>
             <h1>{} of its residents are just low-income.</h1>
@@ -23,8 +24,5 @@ def submit():
             <input type="submit" value="Search">
         </form>
     '''
-
-def invalidation():
-    return False
 
 app.run(debug=True, host="0.0.0.0", port=80)
