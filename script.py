@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("FoodAccessData.csv")
-
 # Census tract
 def extractId(censusTract): # to extract last 6 digits
     return str(censusTract)[-6:]
@@ -15,7 +13,7 @@ def checkTractNum(num):
         else:
             num = input("Enter Census ")
 
-def findTractNum(num):
+def findTractNum(num, listValidTractNum):
     num = checkTractNum(num)
     listValidTractNum.sort()
     low = 0
@@ -37,7 +35,7 @@ def addCounty(c):
         c = c.lower().capitalize() + " County"
     return c
 
-def checkCounty(c):
+def checkCounty(c, listValidCounties):
     c = addCounty(c)
     if c in listValidCounties:
         return c
@@ -63,7 +61,6 @@ def checkState(state):
         else:
             return "Please enter valid state"
     else:
-        state = state.split(" ")
         state = state.capitalize()
         states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
   "Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois",
@@ -91,17 +88,8 @@ def calcRatio(num1, num2):
         ratio = round(ratio, 2)     # round to 2 decimal places
         return ratio
 
-
-df["CensusTract"] = df["CensusTract"].apply(extractId)  # changes CensusTract # to last 6 digits
-df.replace({np.NaN : "Unknown"}, inplace=True)  # replaces NaN with "Unknown"
-
-# build dictionary
-listValidCounties = df["County"].tolist()
-listValidTractNum = df["CensusTract"].tolist()
-df = df.set_index(["CensusTract", "State", "County"]).T.to_dict("list")
-
 # take user input
-tractNum = input("Enter Census Tract Number: ")
+"""tractNum = input("Enter Census Tract Number: ")
 tractNum = findTractNum(tractNum)
 state = input("Enter state: ")
 state = checkState(state)
@@ -119,8 +107,36 @@ flagTrue = defFlag(flag)   # boolean of if flag is 0 or 1
 lali = data[2]  # number of low access low income people
 laliRatio = calcRatio(lali, population)
 li = data[3]    # number of low income people
-liRatio = calcRatio(li, population)
+liRatio = calcRatio(li, population)"""
 
 # print(df)
-print(data)
-print(str(population) + ", " + str(flagTrue) + ", " + str(laliRatio) + ", " + str(liRatio))
+#print(data)
+#print(str(population) + ", " + str(flagTrue) + ", " + str(laliRatio) + ", " + str(liRatio))
+
+def mainFunction(censusTractData, county, state):
+    df = pd.read_csv("FoodAccessData.csv")
+    df["CensusTract"] = df["CensusTract"].apply(extractId)  # changes CensusTract # to last 6 digits
+    df.replace({np.NaN: "Unknown"}, inplace=True)  # replaces NaN with "Unknown"
+
+    # build dictionary
+    listValidCounties = df["County"].tolist()
+    listValidTractNum = df["CensusTract"].tolist()
+    df = df.set_index(["CensusTract", "State", "County"]).T.to_dict("list")
+
+    tractNum = findTractNum(censusTractData, listValidTractNum)
+    state = checkState(state)
+    county = checkCounty(county, listValidCounties)
+    print(tractNum + state + county)
+
+    list = [tractNum, state, county]
+    tup = tuple(list)
+
+    data = df.get(tup)  # get list of data
+    population = data[0]
+    flag = data[1]  # flag of 0 or 1, 33% or 500 people are LALI
+    flagTrue = defFlag(flag)  # boolean of if flag is 0 or 1
+    lali = data[2]  # number of low access low income people
+    laliRatio = calcRatio(lali, population)
+    li = data[3]  # number of low income people
+    liRatio = calcRatio(li, population)
+    return [population, flagTrue, laliRatio, liRatio]
