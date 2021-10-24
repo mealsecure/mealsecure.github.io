@@ -152,7 +152,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 2rem;
 }
 
 h6, .h6 {
@@ -3042,19 +3042,28 @@ textarea.form-control-lg {
 .btn-primary {
   color: #fff;
   background-color: #264653;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   border-color: #264653;
   margin-right:30px;
-  border-radius: 20px;
+  border-radius: 50px;
 }
 .btn-primary2 {
+  color: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #264653;
+  border-color: #264653;
+  border-radius: 50px;
+}
+.btn-primary3 {
   color: #fff;
   padding-left: 50px;
   padding-right: 50px;
   background-color: #264653;
   border-color: #264653;
-  border-radius: 20px;
+  border-radius: 50px;
+  align-content: center;
 }
 .btn-primary:hover {
   color: #fff;
