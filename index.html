@@ -50,59 +50,48 @@
                             <h1 class="mb-5">THE EXTENT OF FOOD INSECURITY</h1>
                             <h3 class="mb-4">in your area?</h3>
                             </p>
-                            <!-- Signup form-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
-                            <form class="form-subscribe" id="contactForm">
-                                <!--county-->
+
+                            <!--<form action="http://128.61.40.183:5555/" method="get">
+                                <input type="number" name="census-tract-code" id="census-tract-code">
+                                <input type="text" name="state" id="state">
+                                <input type="text" name="county" id="county">
+                                <input type="submit">
+                            </form>-->
+
+                            <form action="http://128.61.40.183:5555/" class="form" id="dataForm" method="get">
+                                
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="county" type="text" placeholder="Enter your County" data-sb-validations="required,text" />
+                                        <input class="form-control form-control-lg" id="county" type="text" name="county" placeholder="Enter your County" data-sb-validations="required,text" />
                                         <div class="invalid-feedback text-white" data-sb-feedback="county:required">County is required.</div>
                                         <div class="invalid-feedback text-white" data-sb-feedback="county:text">County is not valid.</div>
                                     </div>
                                     <div class="col-auto"></div>
                                
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="state" type="text" placeholder="Enter your State" data-sb-validations="required,text" />
+                                        <input class="form-control form-control-lg" id="state" type="text" name="state" placeholder="Enter your State" data-sb-validations="required,text" />
                                         <div class="invalid-feedback text-white" data-sb-feedback="state:required">Email Address is required.</div>
                                         <div class="invalid-feedback text-white" data-sb-feedback="state:text">Email Address is not valid.</div>
                                     </div>
                                     <div class="col-auto"></div>
                                 </div>
-                                <!--ctc-->
+                                
                                 <h4>
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="census-tract-code" type="email" placeholder="Enter your Census Tract Code" data-sb-validations="required,email" size="20" />
+                                        <input class="form-control form-control-lg" id="census-tract-code" name="census-tract-code" type="number" placeholder="Enter your Census Tract Code" data-sb-validations="required,number" size="20" />
                                         <div class="invalid-feedback text-white" data-sb-feedback="number:required">Census tract code is required.</div>
                                         <div class="invalid-feedback text-white" data-sb-feedback="census-tract-code:number">Census tract code is not valid.</div>
                                     </div>
-                                    <!--search button-->
-                                    <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit"><a href="searchresults.html">Search</a></button></div>
+                                    
+                                    <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Search</button></div>
+
                                     </h4>
+
+                                    <div class="col-auto"><button class="btn btn-primary4" id="submitButton" type="submit"><a href="searchresults.html" style="color: white">Search</a></button></div>
+                                </h4>
                                 </div>
                                 
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        <p>To activate this form, sign up at</p>
-                                        <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                    </div>
-                                </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <div>
                                     <style>
@@ -110,7 +99,7 @@
                                             color:azure
                                         }
                                     </style>
-                                <p1><a  href="https://geocoding.geo.census.gov/geocoder/geographies/address?form" target="blank"><u>I don't know my census tract code</u></a></p1>
+                                <p1><a  href="https://geocoding.geo.census.gov/geocoder/geographies/address?form" target="blank" style="color:white"><u>I don't know my census tract code</u></a></p1>
                                 </div>
                             </form>
                         </div>
